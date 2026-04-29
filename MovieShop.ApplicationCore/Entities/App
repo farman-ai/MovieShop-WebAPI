@@ -1,0 +1,701 @@
+App
+├── .DS_Store
+├── MovieShop
+│   ├── .DS_Store
+│   ├── Archive.zip
+│   ├── MovieShop.ApplicationCore
+│   │   ├── Contracts
+│   │   │   ├── Repository
+│   │   │   │   ├── ICastRepository.cs
+│   │   │   │   ├── IGenreRepository.cs
+│   │   │   │   ├── IMovieRepository.cs
+│   │   │   │   ├── IPurchaseRepository.cs
+│   │   │   │   ├── IReportRepository.cs
+│   │   │   │   ├── IRepository.cs
+│   │   │   │   └── IUserRepository.cs
+│   │   │   └── Services
+│   │   │       ├── IAccountService.cs
+│   │   │       ├── IAdminService.cs
+│   │   │       ├── ICastService.cs
+│   │   │       ├── IGenreService.cs
+│   │   │       ├── IMovieService.cs
+│   │   │       ├── IPurchaseService.cs
+│   │   │       └── IUserService.cs
+│   │   ├── Entities
+│   │   │   ├── Cast.cs
+│   │   │   ├── Crew.cs
+│   │   │   ├── Favorite.cs
+│   │   │   ├── Genre.cs
+│   │   │   ├── Movie.cs
+│   │   │   ├── MovieCast.cs
+│   │   │   ├── MovieCrew.cs
+│   │   │   ├── MovieGenre.cs
+│   │   │   ├── Purchase.cs
+│   │   │   ├── Review.cs
+│   │   │   ├── Role.cs
+│   │   │   ├── Trailer.cs
+│   │   │   ├── User.cs
+│   │   │   └── UserRole.cs
+│   │   ├── Models
+│   │   │   ├── CastDetailsResponseModel.cs
+│   │   │   ├── CastModel.cs
+│   │   │   ├── GenreDetailsModel.cs
+│   │   │   ├── GenreModel.cs
+│   │   │   ├── LoginModel.cs
+│   │   │   ├── MovieCardModel.cs
+│   │   │   ├── MovieDetailsResponseModel.cs
+│   │   │   ├── PurchaseModel.cs
+│   │   │   ├── PurchaseRequestModel.cs
+│   │   │   ├── ReviewRequestModel.cs
+│   │   │   ├── TrailerModel.cs
+│   │   │   └── UserRegisterModel.cs
+│   │   ├── MovieShop.ApplicationCore.csproj
+│   │   ├── bin
+│   │   │   └── Debug
+│   │   │       └── net10.0
+│   │   │           ├── MovieShop.ApplicationCore.deps.json
+│   │   │           ├── MovieShop.ApplicationCore.dll
+│   │   │           └── MovieShop.ApplicationCore.pdb
+│   │   └── obj
+│   │       ├── Debug
+│   │       │   └── net10.0
+│   │       │       ├── .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+│   │       │       ├── MovieShop.ApplicationCore.AssemblyInfo.cs
+│   │       │       ├── MovieShop.ApplicationCore.AssemblyInfoInputs.cache
+│   │       │       ├── MovieShop.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+│   │       │       ├── MovieShop.ApplicationCore.GlobalUsings.g.cs
+│   │       │       ├── MovieShop.ApplicationCore.assets.cache
+│   │       │       ├── MovieShop.ApplicationCore.csproj.CoreCompileInputs.cache
+│   │       │       ├── MovieShop.ApplicationCore.csproj.FileListAbsolute.txt
+│   │       │       ├── MovieShop.ApplicationCore.dll
+│   │       │       ├── MovieShop.ApplicationCore.pdb
+│   │       │       ├── MovieShop.ApplicationCore.sourcelink.json
+│   │       │       ├── ref
+│   │       │       │   └── MovieShop.ApplicationCore.dll
+│   │       │       └── refint
+│   │       │           └── MovieShop.ApplicationCore.dll
+│   │       ├── MovieShop.ApplicationCore.csproj.nuget.dgspec.json
+│   │       ├── MovieShop.ApplicationCore.csproj.nuget.g.props
+│   │       ├── MovieShop.ApplicationCore.csproj.nuget.g.targets
+│   │       ├── project.assets.json
+│   │       └── project.nuget.cache
+│   ├── MovieShop.Infrastructure
+│   │   ├── Data
+│   │   │   └── MovieShopDbContext.cs
+│   │   ├── Migrations
+│   │   │   ├── 20260418100203_InitialCreate.Designer.cs
+│   │   │   ├── 20260418100203_InitialCreate.cs
+│   │   │   ├── 20260418111514_AddTrailerAndMovieCast.Designer.cs
+│   │   │   ├── 20260418111514_AddTrailerAndMovieCast.cs
+│   │   │   ├── 20260418115613_AddMovieGenreTrailerMovieCast.Designer.cs
+│   │   │   ├── 20260418115613_AddMovieGenreTrailerMovieCast.cs
+│   │   │   ├── 20260420150712_InitialMovieShopSchema.Designer.cs
+│   │   │   ├── 20260420150712_InitialMovieShopSchema.cs
+│   │   │   └── MovieShopDbContextModelSnapshot.cs
+│   │   ├── MovieShop.Infrastructure.csproj
+│   │   ├── Repository
+│   │   │   ├── CastRepository.cs
+│   │   │   ├── GenreRepository.cs
+│   │   │   ├── MovieRepository.cs
+│   │   │   ├── PurchaseRepository.cs
+│   │   │   ├── ReportRepository.cs
+│   │   │   ├── Repository.cs
+│   │   │   └── UserRepository.cs
+│   │   ├── Services
+│   │   │   ├── AccountService.cs
+│   │   │   ├── AdminService.cs
+│   │   │   ├── CastService.cs
+│   │   │   ├── GenreService.cs
+│   │   │   ├── MovieService.cs
+│   │   │   ├── PurchaseService.cs
+│   │   │   ├── Untitled.csv
+│   │   │   └── UserService.cs
+│   │   ├── bin
+│   │   │   └── Debug
+│   │   │       └── net10.0
+│   │   │           ├── BuildHost-net472
+│   │   │           │   ├── Microsoft.Build.Locator.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config
+│   │   │           │   ├── Microsoft.IO.Redist.dll
+│   │   │           │   ├── Newtonsoft.Json.dll
+│   │   │           │   ├── System.Buffers.dll
+│   │   │           │   ├── System.Collections.Immutable.dll
+│   │   │           │   ├── System.CommandLine.dll
+│   │   │           │   ├── System.Memory.dll
+│   │   │           │   ├── System.Numerics.Vectors.dll
+│   │   │           │   ├── System.Runtime.CompilerServices.Unsafe.dll
+│   │   │           │   ├── System.Threading.Tasks.Extensions.dll
+│   │   │           │   ├── cs
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── de
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── es
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── fr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── it
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ja
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ko
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pl
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pt-BR
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ru
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── tr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── zh-Hans
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   └── zh-Hant
+│   │   │           │       └── System.CommandLine.resources.dll
+│   │   │           ├── BuildHost-netcore
+│   │   │           │   ├── Microsoft.Build.Locator.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.runtimeconfig.json
+│   │   │           │   ├── Newtonsoft.Json.dll
+│   │   │           │   ├── System.Collections.Immutable.dll
+│   │   │           │   ├── System.CommandLine.dll
+│   │   │           │   ├── cs
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── de
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── es
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── fr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── it
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ja
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ko
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pl
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pt-BR
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ru
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── tr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── zh-Hans
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   └── zh-Hant
+│   │   │           │       └── System.CommandLine.resources.dll
+│   │   │           ├── MovieShop.ApplicationCore.dll
+│   │   │           ├── MovieShop.ApplicationCore.pdb
+│   │   │           ├── MovieShop.Infrastructure.deps.json
+│   │   │           ├── MovieShop.Infrastructure.dll
+│   │   │           ├── MovieShop.Infrastructure.pdb
+│   │   │           └── MovieShop.Infrastructure.runtimeconfig.json
+│   │   └── obj
+│   │       ├── Debug
+│   │       │   └── net10.0
+│   │       │       ├── .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+│   │       │       ├── MovieSho.4342F073.Up2Date
+│   │       │       ├── MovieShop.Infrastructure.AssemblyInfo.cs
+│   │       │       ├── MovieShop.Infrastructure.AssemblyInfoInputs.cache
+│   │       │       ├── MovieShop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+│   │       │       ├── MovieShop.Infrastructure.GlobalUsings.g.cs
+│   │       │       ├── MovieShop.Infrastructure.assets.cache
+│   │       │       ├── MovieShop.Infrastructure.csproj.AssemblyReference.cache
+│   │       │       ├── MovieShop.Infrastructure.csproj.CoreCompileInputs.cache
+│   │       │       ├── MovieShop.Infrastructure.csproj.FileListAbsolute.txt
+│   │       │       ├── MovieShop.Infrastructure.dll
+│   │       │       ├── MovieShop.Infrastructure.genruntimeconfig.cache
+│   │       │       ├── MovieShop.Infrastructure.pdb
+│   │       │       ├── MovieShop.Infrastructure.sourcelink.json
+│   │       │       ├── ref
+│   │       │       │   └── MovieShop.Infrastructure.dll
+│   │       │       └── refint
+│   │       │           └── MovieShop.Infrastructure.dll
+│   │       ├── MovieShop.Infrastructure.csproj.nuget.dgspec.json
+│   │       ├── MovieShop.Infrastructure.csproj.nuget.g.props
+│   │       ├── MovieShop.Infrastructure.csproj.nuget.g.targets
+│   │       ├── project.assets.json
+│   │       └── project.nuget.cache
+│   ├── MovieShop.MVC
+│   │   ├── Controllers
+│   │   │   ├── AccountController.cs
+│   │   │   ├── AdminController.cs
+│   │   │   ├── CastController.cs
+│   │   │   ├── GenresController.cs
+│   │   │   ├── HomeController.cs
+│   │   │   ├── MoviesController.cs
+│   │   │   └── UserController.cs
+│   │   ├── Models
+│   │   │   └── ErrorViewModel.cs
+│   │   ├── MovieShop.MVC.csproj
+│   │   ├── Program.cs
+│   │   ├── Properties
+│   │   │   └── launchSettings.json
+│   │   ├── Views
+│   │   │   ├── Account
+│   │   │   │   ├── Index.cshtml
+│   │   │   │   ├── Login.cshtml
+│   │   │   │   └── Register.cshtml
+│   │   │   ├── Admin
+│   │   │   │   └── Index.cshtml
+│   │   │   ├── Cast
+│   │   │   │   ├── Details.cshtml
+│   │   │   │   └── Index.cshtml
+│   │   │   ├── Genres
+│   │   │   │   ├── Details.cshtml
+│   │   │   │   └── Index.cshtml
+│   │   │   ├── Home
+│   │   │   │   ├── Index.cshtml
+│   │   │   │   ├── Privacy.cshtml
+│   │   │   │   └── TopMovies.cshtml
+│   │   │   ├── Movies
+│   │   │   │   ├── Details.cshtml
+│   │   │   │   └── Index.cshtml
+│   │   │   ├── Shared
+│   │   │   │   ├── Error.cshtml
+│   │   │   │   ├── _Layout.cshtml
+│   │   │   │   ├── _Layout.cshtml.css
+│   │   │   │   ├── _MovieCard.cshtml
+│   │   │   │   └── _ValidationScriptsPartial.cshtml
+│   │   │   ├── User
+│   │   │   │   ├── Index.cshtml
+│   │   │   │   └── Purchases.cshtml
+│   │   │   ├── _ViewImports.cshtml
+│   │   │   └── _ViewStart.cshtml
+│   │   ├── appsettings.Development.json
+│   │   ├── appsettings.json
+│   │   ├── bin
+│   │   │   └── Debug
+│   │   │       └── net10.0
+│   │   │           ├── Azure.Core.dll
+│   │   │           ├── Azure.Identity.dll
+│   │   │           ├── BuildHost-net472
+│   │   │           │   ├── Microsoft.Build.Locator.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config
+│   │   │           │   ├── Microsoft.IO.Redist.dll
+│   │   │           │   ├── Newtonsoft.Json.dll
+│   │   │           │   ├── System.Buffers.dll
+│   │   │           │   ├── System.Collections.Immutable.dll
+│   │   │           │   ├── System.CommandLine.dll
+│   │   │           │   ├── System.Memory.dll
+│   │   │           │   ├── System.Numerics.Vectors.dll
+│   │   │           │   ├── System.Runtime.CompilerServices.Unsafe.dll
+│   │   │           │   ├── System.Threading.Tasks.Extensions.dll
+│   │   │           │   ├── cs
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── de
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── es
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── fr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── it
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ja
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ko
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pl
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pt-BR
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ru
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── tr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── zh-Hans
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   └── zh-Hant
+│   │   │           │       └── System.CommandLine.resources.dll
+│   │   │           ├── BuildHost-netcore
+│   │   │           │   ├── Microsoft.Build.Locator.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.runtimeconfig.json
+│   │   │           │   ├── Newtonsoft.Json.dll
+│   │   │           │   ├── System.Collections.Immutable.dll
+│   │   │           │   ├── System.CommandLine.dll
+│   │   │           │   ├── cs
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── de
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── es
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── fr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── it
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ja
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ko
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pl
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── pt-BR
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── ru
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── tr
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   ├── zh-Hans
+│   │   │           │   │   └── System.CommandLine.resources.dll
+│   │   │           │   └── zh-Hant
+│   │   │           │       └── System.CommandLine.resources.dll
+│   │   │           ├── Humanizer.dll
+│   │   │           ├── Microsoft.Bcl.AsyncInterfaces.dll
+│   │   │           ├── Microsoft.Bcl.Cryptography.dll
+│   │   │           ├── Microsoft.Build.Framework.dll
+│   │   │           ├── Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+│   │   │           ├── Microsoft.CodeAnalysis.CSharp.dll
+│   │   │           ├── Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+│   │   │           ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+│   │   │           ├── Microsoft.CodeAnalysis.Workspaces.dll
+│   │   │           ├── Microsoft.CodeAnalysis.dll
+│   │   │           ├── Microsoft.Data.SqlClient.dll
+│   │   │           ├── Microsoft.EntityFrameworkCore.Abstractions.dll
+│   │   │           ├── Microsoft.EntityFrameworkCore.Design.dll
+│   │   │           ├── Microsoft.EntityFrameworkCore.Relational.dll
+│   │   │           ├── Microsoft.EntityFrameworkCore.SqlServer.dll
+│   │   │           ├── Microsoft.EntityFrameworkCore.dll
+│   │   │           ├── Microsoft.Extensions.DependencyModel.dll
+│   │   │           ├── Microsoft.Identity.Client.Extensions.Msal.dll
+│   │   │           ├── Microsoft.Identity.Client.dll
+│   │   │           ├── Microsoft.IdentityModel.Abstractions.dll
+│   │   │           ├── Microsoft.IdentityModel.JsonWebTokens.dll
+│   │   │           ├── Microsoft.IdentityModel.Logging.dll
+│   │   │           ├── Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+│   │   │           ├── Microsoft.IdentityModel.Protocols.dll
+│   │   │           ├── Microsoft.IdentityModel.Tokens.dll
+│   │   │           ├── Microsoft.SqlServer.Server.dll
+│   │   │           ├── Microsoft.VisualStudio.SolutionPersistence.dll
+│   │   │           ├── Mono.TextTemplating.dll
+│   │   │           ├── MovieShop.ApplicationCore.dll
+│   │   │           ├── MovieShop.ApplicationCore.pdb
+│   │   │           ├── MovieShop.Infrastructure.dll
+│   │   │           ├── MovieShop.Infrastructure.pdb
+│   │   │           ├── MovieShop.MVC
+│   │   │           ├── MovieShop.MVC.deps.json
+│   │   │           ├── MovieShop.MVC.dll
+│   │   │           ├── MovieShop.MVC.pdb
+│   │   │           ├── MovieShop.MVC.runtimeconfig.json
+│   │   │           ├── MovieShop.MVC.staticwebassets.endpoints.json
+│   │   │           ├── MovieShop.MVC.staticwebassets.runtime.json
+│   │   │           ├── Newtonsoft.Json.dll
+│   │   │           ├── System.ClientModel.dll
+│   │   │           ├── System.CodeDom.dll
+│   │   │           ├── System.Composition.AttributedModel.dll
+│   │   │           ├── System.Composition.Convention.dll
+│   │   │           ├── System.Composition.Hosting.dll
+│   │   │           ├── System.Composition.Runtime.dll
+│   │   │           ├── System.Composition.TypedParts.dll
+│   │   │           ├── System.Configuration.ConfigurationManager.dll
+│   │   │           ├── System.IdentityModel.Tokens.Jwt.dll
+│   │   │           ├── System.Memory.Data.dll
+│   │   │           ├── System.Security.Cryptography.ProtectedData.dll
+│   │   │           ├── appsettings.Development.json
+│   │   │           ├── appsettings.json
+│   │   │           ├── cs
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── de
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── es
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── fr
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── it
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── ja
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── ko
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── pl
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── pt-BR
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── ru
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── runtimes
+│   │   │           │   ├── unix
+│   │   │           │   │   └── lib
+│   │   │           │   │       └── net9.0
+│   │   │           │   │           └── Microsoft.Data.SqlClient.dll
+│   │   │           │   ├── win
+│   │   │           │   │   └── lib
+│   │   │           │   │       └── net9.0
+│   │   │           │   │           └── Microsoft.Data.SqlClient.dll
+│   │   │           │   ├── win-arm64
+│   │   │           │   │   └── native
+│   │   │           │   │       └── Microsoft.Data.SqlClient.SNI.dll
+│   │   │           │   ├── win-x64
+│   │   │           │   │   └── native
+│   │   │           │   │       └── Microsoft.Data.SqlClient.SNI.dll
+│   │   │           │   └── win-x86
+│   │   │           │       └── native
+│   │   │           │           └── Microsoft.Data.SqlClient.SNI.dll
+│   │   │           ├── tr
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           ├── zh-Hans
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │           │   ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │           │   └── Microsoft.Data.SqlClient.resources.dll
+│   │   │           └── zh-Hant
+│   │   │               ├── Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+│   │   │               ├── Microsoft.CodeAnalysis.CSharp.resources.dll
+│   │   │               ├── Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+│   │   │               ├── Microsoft.CodeAnalysis.Workspaces.resources.dll
+│   │   │               ├── Microsoft.CodeAnalysis.resources.dll
+│   │   │               └── Microsoft.Data.SqlClient.resources.dll
+│   │   ├── obj
+│   │   │   ├── Debug
+│   │   │   │   └── net10.0
+│   │   │   │       ├── .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+│   │   │   │       ├── MovieSho.38A241E1.Up2Date
+│   │   │   │       ├── MovieShop.MVC.AssemblyInfo.cs
+│   │   │   │       ├── MovieShop.MVC.AssemblyInfoInputs.cache
+│   │   │   │       ├── MovieShop.MVC.GeneratedMSBuildEditorConfig.editorconfig
+│   │   │   │       ├── MovieShop.MVC.GlobalUsings.g.cs
+│   │   │   │       ├── MovieShop.MVC.MvcApplicationPartsAssemblyInfo.cache
+│   │   │   │       ├── MovieShop.MVC.RazorAssemblyInfo.cache
+│   │   │   │       ├── MovieShop.MVC.RazorAssemblyInfo.cs
+│   │   │   │       ├── MovieShop.MVC.assets.cache
+│   │   │   │       ├── MovieShop.MVC.csproj.AssemblyReference.cache
+│   │   │   │       ├── MovieShop.MVC.csproj.CoreCompileInputs.cache
+│   │   │   │       ├── MovieShop.MVC.csproj.FileListAbsolute.txt
+│   │   │   │       ├── MovieShop.MVC.dll
+│   │   │   │       ├── MovieShop.MVC.genruntimeconfig.cache
+│   │   │   │       ├── MovieShop.MVC.pdb
+│   │   │   │       ├── MovieShop.MVC.sourcelink.json
+│   │   │   │       ├── apphost
+│   │   │   │       ├── compressed
+│   │   │   │       │   ├── 0ij147txsh-{0}-6pdc2jztkx-6pdc2jztkx.gz
+│   │   │   │       │   ├── 0ppm2iu9we-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+│   │   │   │       │   ├── 0ssrcqrfwb-{0}-rc7zl4v9ir-rc7zl4v9ir.gz
+│   │   │   │       │   ├── 17sw9d4nxd-{0}-erw9l3u2r3-erw9l3u2r3.gz
+│   │   │   │       │   ├── 1axmt5lxbx-{0}-47otxtyo56-47otxtyo56.gz
+│   │   │   │       │   ├── 250zcew7j3-{0}-c2jlpeoesf-c2jlpeoesf.gz
+│   │   │   │       │   ├── 2iz4818i57-{0}-rzd6atqjts-rzd6atqjts.gz
+│   │   │   │       │   ├── 2k818r539x-{0}-06098lyss8-06098lyss8.gz
+│   │   │   │       │   ├── 2r2605816e-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+│   │   │   │       │   ├── 34d2rmybhw-{0}-muycvpuwrr-muycvpuwrr.gz
+│   │   │   │       │   ├── 34f1xvba53-{0}-tdbxkamptv-tdbxkamptv.gz
+│   │   │   │       │   ├── 3fenqsmyvy-{0}-vr1egmr9el-vr1egmr9el.gz
+│   │   │   │       │   ├── 3zkmw2kti5-{0}-h1s4sie4z3-h1s4sie4z3.gz
+│   │   │   │       │   ├── 5ugb8b6ufz-{0}-ft3s53vfgj-ft3s53vfgj.gz
+│   │   │   │       │   ├── 60oj60fsl5-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+│   │   │   │       │   ├── 6mfhpi7x71-{0}-fsbi9cje9m-fsbi9cje9m.gz
+│   │   │   │       │   ├── 7dsrxmo9bp-{0}-mrlpezrjn3-mrlpezrjn3.gz
+│   │   │   │       │   ├── 92b3kyn0w7-{0}-v0zj4ognzu-v0zj4ognzu.gz
+│   │   │   │       │   ├── 93rutvu99a-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+│   │   │   │       │   ├── 9tq6w8bq9h-{0}-aexeepp0ev-aexeepp0ev.gz
+│   │   │   │       │   ├── a6cn7nuvad-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+│   │   │   │       │   ├── ak4fl7m4sd-{0}-nvvlpmu67g-nvvlpmu67g.gz
+│   │   │   │       │   ├── bp4aekbfiq-{0}-ausgxo2sd3-ausgxo2sd3.gz
+│   │   │   │       │   ├── c11mp07ad6-{0}-notf2xhcfb-notf2xhcfb.gz
+│   │   │   │       │   ├── ceuotagpau-{0}-0j3bgjxly4-0j3bgjxly4.gz
+│   │   │   │       │   ├── clorjrpi3i-{0}-hrwsygsryq-hrwsygsryq.gz
+│   │   │   │       │   ├── d3jg8abbjr-{0}-j5mq2jizvt-j5mq2jizvt.gz
+│   │   │   │       │   ├── dae8a4lfg3-{0}-y7v9cxd14o-y7v9cxd14o.gz
+│   │   │   │       │   ├── dc9eue6yuz-{0}-46ein0sx1k-46ein0sx1k.gz
+│   │   │   │       │   ├── eluv5guk5e-{0}-jd9uben2k1-jd9uben2k1.gz
+│   │   │   │       │   ├── f78lm6ciz3-{0}-dxx9fxp4il-dxx9fxp4il.gz
+│   │   │   │       │   ├── fbgtdu7aqx-{0}-khv3u5hwcm-khv3u5hwcm.gz
+│   │   │   │       │   ├── fc88qacu0r-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+│   │   │   │       │   ├── g90ke8az1y-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+│   │   │   │       │   ├── gglqeb3g82-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+│   │   │   │       │   ├── gp6p26vllq-{0}-0i3buxo5is-0i3buxo5is.gz
+│   │   │   │       │   ├── hzwljitpnm-{0}-83jwlth58m-83jwlth58m.gz
+│   │   │   │       │   ├── isbnzl1nsn-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+│   │   │   │       │   ├── kgemiw58i8-{0}-87fc7y1x7t-87fc7y1x7t.gz
+│   │   │   │       │   ├── kwdcr93eyw-{0}-ttgo8qnofa-ttgo8qnofa.gz
+│   │   │   │       │   ├── l8uo3a9vqb-{0}-gcp963chpq-gcp963chpq.gz
+│   │   │   │       │   ├── lhv4ecexfh-{0}-cosvhxvwiu-cosvhxvwiu.gz
+│   │   │   │       │   ├── mhybha1iku-{0}-s35ty4nyc5-s35ty4nyc5.gz
+│   │   │   │       │   ├── mmjbj2eivp-{0}-4v8eqarkd7-4v8eqarkd7.gz
+│   │   │   │       │   ├── mrv84acegh-{0}-o1o13a6vjx-o1o13a6vjx.gz
+│   │   │   │       │   ├── oa6n80jot7-{0}-b7pk76d08c-b7pk76d08c.gz
+│   │   │   │       │   ├── raf2lqapu7-{0}-pj5nd1wqec-pj5nd1wqec.gz
+│   │   │   │       │   ├── rrwyhi3h7z-{0}-356vix0kms-356vix0kms.gz
+│   │   │   │       │   ├── rvvqxlpa7g-{0}-ag7o75518u-ag7o75518u.gz
+│   │   │   │       │   ├── sl2xcsxtq7-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+│   │   │   │       │   ├── u18v9e0xiy-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+│   │   │   │       │   ├── unccaqh1p0-{0}-493y06b0oq-493y06b0oq.gz
+│   │   │   │       │   ├── wa6mwaakv1-{0}-6cfz1n2cew-6cfz1n2cew.gz
+│   │   │   │       │   ├── wguczvdtor-{0}-kbrnm935zg-kbrnm935zg.gz
+│   │   │   │       │   ├── wk7jmr4604-{0}-ub07r2b239-ub07r2b239.gz
+│   │   │   │       │   ├── x1i6k8sjgs-{0}-37tfw0ft22-37tfw0ft22.gz
+│   │   │   │       │   ├── xbgtqdlrao-{0}-63fj8s7r0e-63fj8s7r0e.gz
+│   │   │   │       │   ├── xkinmmdemi-{0}-c2oey78nd0-c2oey78nd0.gz
+│   │   │   │       │   ├── xp3c1gkru0-{0}-61n19gt1b8-61n19gt1b8.gz
+│   │   │   │       │   ├── y4vuh5u3io-{0}-bqjiyaj88i-bqjiyaj88i.gz
+│   │   │   │       │   ├── z3ga9ew1bq-{0}-mlv21k5csn-mlv21k5csn.gz
+│   │   │   │       │   ├── z9ox8rg2gj-{0}-gcp963chpq-gcp963chpq.gz
+│   │   │   │       │   ├── zcx9fpsj4s-{0}-iovd86k7lj-iovd86k7lj.gz
+│   │   │   │       │   └── zg4tlepias-{0}-d7shbmvgxk-d7shbmvgxk.gz
+│   │   │   │       ├── rbcswa.dswa.cache.json
+│   │   │   │       ├── ref
+│   │   │   │       │   └── MovieShop.MVC.dll
+│   │   │   │       ├── refint
+│   │   │   │       │   └── MovieShop.MVC.dll
+│   │   │   │       ├── rjimswa.dswa.cache.json
+│   │   │   │       ├── rjsmcshtml.dswa.cache.json
+│   │   │   │       ├── rjsmrazor.dswa.cache.json
+│   │   │   │       ├── rpswa.dswa.cache.json
+│   │   │   │       ├── scopedcss
+│   │   │   │       │   ├── Views
+│   │   │   │       │   │   └── Shared
+│   │   │   │       │   │       └── _Layout.cshtml.rz.scp.css
+│   │   │   │       │   ├── bundle
+│   │   │   │       │   │   └── MovieShop.MVC.styles.css
+│   │   │   │       │   └── projectbundle
+│   │   │   │       │       └── MovieShop.MVC.bundle.scp.css
+│   │   │   │       ├── staticwebassets
+│   │   │   │       ├── staticwebassets.build.endpoints.json
+│   │   │   │       ├── staticwebassets.build.json
+│   │   │   │       ├── staticwebassets.build.json.cache
+│   │   │   │       ├── staticwebassets.development.json
+│   │   │   │       └── swae.build.ex.cache
+│   │   │   ├── MovieShop.MVC.csproj.nuget.dgspec.json
+│   │   │   ├── MovieShop.MVC.csproj.nuget.g.props
+│   │   │   ├── MovieShop.MVC.csproj.nuget.g.targets
+│   │   │   ├── project.assets.json
+│   │   │   └── project.nuget.cache
+│   │   └── wwwroot
+│   │       ├── css
+│   │       │   └── site.css
+│   │       ├── favicon.ico
+│   │       ├── js
+│   │       │   └── site.js
+│   │       └── lib
+│   │           ├── bootstrap
+│   │           │   ├── LICENSE
+│   │           │   └── dist
+│   │           │       ├── css
+│   │           │       │   ├── bootstrap-grid.css
+│   │           │       │   ├── bootstrap-grid.css.map
+│   │           │       │   ├── bootstrap-grid.min.css
+│   │           │       │   ├── bootstrap-grid.min.css.map
+│   │           │       │   ├── bootstrap-grid.rtl.css
+│   │           │       │   ├── bootstrap-grid.rtl.css.map
+│   │           │       │   ├── bootstrap-grid.rtl.min.css
+│   │           │       │   ├── bootstrap-grid.rtl.min.css.map
+│   │           │       │   ├── bootstrap-reboot.css
+│   │           │       │   ├── bootstrap-reboot.css.map
+│   │           │       │   ├── bootstrap-reboot.min.css
+│   │           │       │   ├── bootstrap-reboot.min.css.map
+│   │           │       │   ├── bootstrap-reboot.rtl.css
+│   │           │       │   ├── bootstrap-reboot.rtl.css.map
+│   │           │       │   ├── bootstrap-reboot.rtl.min.css
+│   │           │       │   ├── bootstrap-reboot.rtl.min.css.map
+│   │           │       │   ├── bootstrap-utilities.css
+│   │           │       │   ├── bootstrap-utilities.css.map
+│   │           │       │   ├── bootstrap-utilities.min.css
+│   │           │       │   ├── bootstrap-utilities.min.css.map
+│   │           │       │   ├── bootstrap-utilities.rtl.css
+│   │           │       │   ├── bootstrap-utilities.rtl.css.map
+│   │           │       │   ├── bootstrap-utilities.rtl.min.css
+│   │           │       │   ├── bootstrap-utilities.rtl.min.css.map
+│   │           │       │   ├── bootstrap.css
+│   │           │       │   ├── bootstrap.css.map
+│   │           │       │   ├── bootstrap.min.css
+│   │           │       │   ├── bootstrap.min.css.map
+│   │           │       │   ├── bootstrap.rtl.css
+│   │           │       │   ├── bootstrap.rtl.css.map
+│   │           │       │   ├── bootstrap.rtl.min.css
+│   │           │       │   └── bootstrap.rtl.min.css.map
+│   │           │       └── js
+│   │           │           ├── bootstrap.bundle.js
+│   │           │           ├── bootstrap.bundle.js.map
+│   │           │           ├── bootstrap.bundle.min.js
+│   │           │           ├── bootstrap.bundle.min.js.map
+│   │           │           ├── bootstrap.esm.js
+│   │           │           ├── bootstrap.esm.js.map
+│   │           │           ├── bootstrap.esm.min.js
+│   │           │           ├── bootstrap.esm.min.js.map
+│   │           │           ├── bootstrap.js
+│   │           │           ├── bootstrap.js.map
+│   │           │           ├── bootstrap.min.js
+│   │           │           └── bootstrap.min.js.map
+│   │           ├── jquery
+│   │           │   ├── LICENSE.txt
+│   │           │   └── dist
+│   │           │       ├── jquery.js
+│   │           │       ├── jquery.min.js
+│   │           │       ├── jquery.min.map
+│   │           │       ├── jquery.slim.js
+│   │           │       ├── jquery.slim.min.js
+│   │           │       └── jquery.slim.min.map
+│   │           ├── jquery-validation
+│   │           │   ├── LICENSE.md
+│   │           │   └── dist
+│   │           │       ├── additional-methods.js
+│   │           │       ├── additional-methods.min.js
+│   │           │       ├── jquery.validate.js
+│   │           │       └── jquery.validate.min.js
+│   │           └── jquery-validation-unobtrusive
+│   │               ├── LICENSE.txt
+│   │               └── dist
+│   │                   ├── jquery.validate.unobtrusive.js
+│   │                   └── jquery.validate.unobtrusive.min.js
+│   └── MovieShop.slnx
+└── README.md
