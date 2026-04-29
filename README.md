@@ -2,8 +2,8 @@
 
 Standalone ASP.NET Core Web API version of the MovieShop project.
 
-The API uses a local SQLite database file, `movieshop.db`, by default. The
-database is created automatically on startup with a small development seed.
+The API reads from the SQL Server database configured in
+`MovieShop.WebAPI/appsettings.json`.
 
 ## Projects
 
@@ -32,3 +32,19 @@ database is created automatically on startup with a small development seed.
 ```bash
 dotnet run --project MovieShop.WebAPI/MovieShop.WebAPI.csproj
 ```
+
+Then open `http://localhost:5027/swagger`.
+
+## Run with Docker
+
+Build and start the API container:
+
+```bash
+docker compose up --build
+```
+
+Then open `http://localhost:8000/swagger`.
+
+The Docker setup stores the SQLite database in a named Docker volume,
+`movieshop-data`, so the local development seed is created automatically on the
+first startup and persists between container restarts.
