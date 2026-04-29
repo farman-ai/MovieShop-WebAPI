@@ -6,3 +6,6 @@ obj/
 *.suo
 *.rsuser
 *.nupkg
+*.db
+*.db-shm
+*.db-wal

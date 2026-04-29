@@ -2,6 +2,9 @@
 
 Standalone ASP.NET Core Web API version of the MovieShop project.
 
+The API uses a local SQLite database file, `movieshop.db`, by default. The
+database is created automatically on startup with a small development seed.
+
 ## Projects
 
 - `MovieShop.WebAPI` - API host and controllers
