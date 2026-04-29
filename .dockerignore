@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+.git/
+.gitignore
+.idea/
+.vs/
+.vscode/
+Dockerfile
+docker-compose.yml
+movieshop.db
+*.user
+*.suo

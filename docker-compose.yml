@@ -1,0 +1,17 @@
+services:
+  movieshop-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: movieshop-api
+    ports:
+      - "8000:8080"
+    volumes:
+      - movieshop-data:/data
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__MovieShopDbConnection: Data Source=/data/movieshop.db
+
+volumes:
+  movieshop-data:
