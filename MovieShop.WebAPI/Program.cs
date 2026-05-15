@@ -4,14 +4,37 @@ using MovieShop.ApplicationCore.Contracts.Services;
 using MovieShop.Infrastructure.Data;
 using MovieShop.Infrastructure.Repository;
 using MovieShop.Infrastructure.Services;
+using MovieShop.WebAPI.Filters;
+using MovieShop.WebAPI.Middleware;
+using Serilog;
+using Serilog.Formatting.Json;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .Enrich.FromLogContext()
+    .WriteTo.Logger(config => config
+        .Filter.ByIncludingOnly(logEvent =>
+            logEvent.Properties.TryGetValue("LogType", out var value) &&
+            value.ToString() == "\"Exception\"")
+        .WriteTo.File(new JsonFormatter(), "Logs/exceptions-.json", rollingInterval: RollingInterval.Day))
+    .WriteTo.Logger(config => config
+        .Filter.ByIncludingOnly(logEvent =>
+            logEvent.Properties.TryGetValue("LogType", out var value) &&
+            value.ToString() == "\"CreateMovieRequest\"")
+        .WriteTo.File(new JsonFormatter(), "Logs/create-movie-requests-.json", rollingInterval: RollingInterval.Day))
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 builder.Services.AddControllers();
 builder.Services.AddProblemDetails();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton(Log.Logger);
+builder.Services.AddScoped<LogCreateMovieRequestFilter>();
 
 builder.Services.AddDbContext<MovieShopDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopDbConnection")));
@@ -27,8 +50,11 @@ builder.Services.AddScoped<ICastService, CastService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
@@ -38,7 +64,6 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler();
     app.UseHsts();
 }
 
@@ -53,4 +78,11 @@ app.MapGet("/", () => Results.Ok(new
     OpenApi = "/openapi/v1.json"
 }));
 
-app.Run();
+try
+{
+    app.Run();
+}
+finally
+{
+    Log.CloseAndFlush();
+}
